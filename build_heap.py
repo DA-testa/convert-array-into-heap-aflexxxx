@@ -26,51 +26,48 @@ def sift_down(i, data, swaps):
 
 
 def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
+    # Add prompt for input type
     input_type = input()
-
-
+    
+    # Keyboard input
     if input_type == "I":
-        n = int(input())
+        n = int(input().strip())
         data = list(map(int, input().split()))
 
+        # Add checks
         assert len(data) == n
+        assert 1 <= n <= 10 ** 5 and all(0 <= x <= 10 ** 9 for x in data)
 
         swaps = build_heap(data)
 
-        assert len(swaps) <=4 * len(data)
+        # Add check
+        assert len(swaps) <= 4 * n
 
-        if len(swaps) == 0:
-            print(len(swaps))
-            print("The input array is already a heap, because it is sorted in increasing order.")
-        else:
-            print(len(swaps))
-            for i, j in swaps:
-                print(i, j)
+        # Output result
+        print(len(swaps))
+        for i, j in swaps:
+            print(i, j)
 
-    # Handle file input
+    # File input
     elif input_type == "F":
-        filename = input("Enter the filename: ")
+        filename = input()
         with open(filename, "r") as f:
             n = int(f.readline().strip())
             data = list(map(int, f.readline().split()))
 
+            # Add checks
             assert len(data) == n
+            assert 1 <= n <= 10 ** 5 and all(0 <= x <= 10 ** 9 for x in data)
 
             swaps = build_heap(data)
 
-            assert len(swaps) <=4 * len(data)
+            # Add check
+            assert len(swaps) <= 4 * n
 
-            if len(swaps) == 0:
-                print(len(swaps))
-                print("The input array is already a heap, because it is sorted in increasing order.")
-            else:
-                print(len(swaps))
-                for i, j in swaps:
-                    print(i, j)
+            # Output result
+            print(len(swaps))
+            for i, j in swaps:
+                print(i, j)
 
 if __name__ == "__main__":
     main()
