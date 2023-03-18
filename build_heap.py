@@ -26,51 +26,23 @@ def sift_down(i, data, swaps):
 
 
 def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
-    input_str = input()
-    input_lines = input_str.strip().split('\n')
-    input_type = input_lines[0]
-    if input_type == "I":
-        n = int(input_lines[1])
-        data = list(map(int, input_lines[2].split()))
-
+    Input = input()
+    if "I" in Input:
+        n = int(input())
+        data = list(map(int, input().split()))
         assert len(data) == n
-
-        swaps = build_heap(data)
-
-        assert len(swaps) <=4 * len(data)
-
-        if len(swaps) == 0:
-            print(len(swaps))
-            print("The input array is already a heap, because it is sorted in increasing order.")
-        else:
-            print(len(swaps))
-            for i, j in swaps:
-                print(i, j)
-
-    # Handle file input
-    elif input_type == "F":
-        filename = input_lines[1]
-        with open(filename, "r") as f:
-            n = int(f.readline().strip())
-            data = list(map(int, f.readline().split()))
-
+        
+    if "F" in Input: 
+        filepath = "tests/" + input()
+        with open(filepath, 'r') as file:
+            n = int(file.readline().srtip())
+            data = list(map(int, file.readline().strip.split()))
             assert len(data) == n
-
-            swaps = build_heap(data)
-
-            assert len(swaps) <=4 * len(data)
-
-            if len(swaps) == 0:
-                print(len(swaps))
-                print("The input array is already a heap, because it is sorted in increasing order.")
-            else:
-                print(len(swaps))
-                for i, j in swaps:
-                    print(i, j)
-
+    
+    swaps = build_heap(data)
+    
+    for i, j in swaps:
+        print(i, j)
+    
 if __name__ == "__main__":
     main()
