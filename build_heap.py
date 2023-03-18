@@ -35,7 +35,7 @@ def main():
     if "F" in Input: 
         filepath = "tests/" + input()
         with open(filepath, 'r') as file:
-            n = int(file.readline().srtip())
+            n = int(file.readline().strip())
             data = list(map(int, file.readline().strip.split()))
             assert len(data) == n
     
