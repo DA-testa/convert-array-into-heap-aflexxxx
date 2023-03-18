@@ -1,3 +1,6 @@
+# python3
+
+
 def build_heap(data):
     n = len(data)
     swaps = []
@@ -31,7 +34,7 @@ def main():
 
 
     if input_type == "I":
-        n = int(input().strip())
+        n = int(input())
         data = list(map(int, input().split()))
 
         assert len(data) == n
@@ -71,4 +74,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
