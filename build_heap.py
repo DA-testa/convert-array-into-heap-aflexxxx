@@ -26,48 +26,51 @@ def sift_down(i, data, swaps):
 
 
 def main():
-    # Add prompt for input type
-    input_type = input()
     
-    # Keyboard input
+    # TODO : add input and corresponding checks
+    # add another input for I or F 
+    # first two tests are from keyboard, third test is from a file
+    input_str = input()
+    input_lines = input_str.strip().split('\n')
+    input_type = input_lines[0]
     if input_type == "I":
-        n = int(input().strip())
-        data = list(map(int, input().split()))
+        n = int(input_lines[1])
+        data = list(map(int, input_lines[2].split()))
 
-        # Add checks
         assert len(data) == n
-        assert 1 <= n <= 10 ** 5 and all(0 <= x <= 10 ** 9 for x in data)
 
         swaps = build_heap(data)
 
-        # Add check
-        assert len(swaps) <= 4 * n
+        assert len(swaps) <=4 * len(data)
 
-        # Output result
-        print(len(swaps))
-        for i, j in swaps:
-            print(i, j)
+        if len(swaps) == 0:
+            print(len(swaps))
+            print("The input array is already a heap, because it is sorted in increasing order.")
+        else:
+            print(len(swaps))
+            for i, j in swaps:
+                print(i, j)
 
-    # File input
+    # Handle file input
     elif input_type == "F":
-        filename = input()
+        filename = input_lines[1]
         with open(filename, "r") as f:
             n = int(f.readline().strip())
             data = list(map(int, f.readline().split()))
 
-            # Add checks
             assert len(data) == n
-            assert 1 <= n <= 10 ** 5 and all(0 <= x <= 10 ** 9 for x in data)
 
             swaps = build_heap(data)
 
-            # Add check
-            assert len(swaps) <= 4 * n
+            assert len(swaps) <=4 * len(data)
 
-            # Output result
-            print(len(swaps))
-            for i, j in swaps:
-                print(i, j)
+            if len(swaps) == 0:
+                print(len(swaps))
+                print("The input array is already a heap, because it is sorted in increasing order.")
+            else:
+                print(len(swaps))
+                for i, j in swaps:
+                    print(i, j)
 
 if __name__ == "__main__":
     main()
