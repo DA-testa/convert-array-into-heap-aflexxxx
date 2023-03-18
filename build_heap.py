@@ -40,9 +40,13 @@ def main():
             assert len(data) == n
     
     swaps = build_heap(data)
-    
-    for i, j in swaps:
-        print(i, j)
+    if len(swaps) == 0:
+        print(len(swaps))
+        print("The input array is already a heap, because it is sorted in increasing order.")
+    else:
+        print(len(swaps))
+        for i, j in swaps:
+            print(i, j)
     
 if __name__ == "__main__":
     main()
